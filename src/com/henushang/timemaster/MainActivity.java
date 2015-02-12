@@ -1,5 +1,7 @@
 package com.henushang.timemaster;
 
+import com.henushang.timemaster.service.CheckAppThread;
+
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -11,6 +13,7 @@ public class MainActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        initSystem();
         setContentView(R.layout.activity_main);
     }
 
@@ -32,5 +35,14 @@ public class MainActivity extends ActionBarActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+    
+    /**
+     * 进行系统初始化
+     */
+    private void initSystem() {
+    	System.out.println("开始进行系统初始化");
+    	new Thread(new CheckAppThread()).start();
+    	System.out.println("系统初始化完成");
     }
 }
